@@ -8,19 +8,19 @@ else:#if the wrong number of arguments haven't been provided by the user
     print("Not enough arguments. Please provide 2 separate strings.")#error statement
     exit()
 str1Arr = []#this is the array for the first string
-str2Arr = []# this is the array for the second string
+str2Arr = []#this is the array for the second string
 
 count = 0#this variable is for string length in
          #the chance that string1 is longer than string2
 
 res = True#response boolean that determines whether
-          #the answer false or true will be printed
+          #the answer true or false will be printed
 
 """
 insertChars checks the validity of the one-to-one mapping for each character
-in string1. So, if a1(string1 character) has already been put in the array
-then, it checks if a1)is associated with the same character a2. If a2(string2 character)
-is a different character from the first occurrence of a1 then the program will return False,
+in string1 and string2. So, if a1(string1 character) has already been put in the array
+then, it checks if a1 is associated with the same character a2 as it was before. If a2(string2 character)
+is a different character from the previous occurrence of a1 then the method will return False,
 if a2 is the same then it returns True.
 param: a1 is the character in string1, a2 is the character in string2
 returns: True if the characters were put in the array, False otherwise
@@ -28,7 +28,7 @@ returns: True if the characters were put in the array, False otherwise
 def insertChars(a1,a2):
     if a1 in str1Arr:#if a1 is already in the string array
         position = str1Arr.index(a1)#finds the index of the previous occurrence
-        if a2 == str2Arr[position]:#if a2 is the same as a1's previous mapping 
+        if a2 == str2Arr[position]:#if a2 is the same as a1's previous mapping with a2 
             str1Arr.append(a1)#insert into the string1 array
             str2Arr.append(a2)#insert into the string2 array
             return True
@@ -39,7 +39,7 @@ def insertChars(a1,a2):
         str2Arr.append(a2)#insert into the string2 array
         return True
 
-for char1 in string1:# runs through each character in the first string
+for char1 in string1:#runs through each character in the first string
     if count < len(string2):#in the case string2 is smaller then string1 
        char2 = string2[count]#gets the character from string2 in the same position as char1
        res = insertChars(char1,char2)#runs insertChars with char1 and char2
@@ -50,6 +50,8 @@ for char1 in string1:# runs through each character in the first string
         break
     count += 1#increase count by 1
     
-if res == True: sys.stdout.write("true")#if res stays true then string1 and string2 has a one-to-one mapping
-else: sys.stdout.write("false")#if res becomes false then string1 and string2 doesn't have a one-to-one mapping
+if res == True: sys.stdout.write("true")#if res stays true then string1 and string2 has a
+                                        #one-to-one mapping
+else: sys.stdout.write("false")#if res becomes false then string1 and string2 doesn't
+                               #have a one-to-one mapping
         
